@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from models import MarkdownImage, MarkdownFile, Markdown, MarkdownHistory
+from cms_markdown_plugin.models import MarkdownFile, Markdown, MarkdownImage, MarkdownHistory
 
 class MarkdownImageInline(admin.TabularInline):
     model = MarkdownImage
