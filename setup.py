@@ -8,6 +8,8 @@ setup(name='django-cms-markdown',
     author='Mikhail Turilin/Ilya Brodotsky',
     author_email='mturilin@gmail.com',
     url='github.com/mturilin/django-cms-markdown',
+    package_data={ '': ['templates/*'] },
+    include_package_data = True,
     packages=find_packages(),
     install_requires=[
         'markdown==2.1.1',
