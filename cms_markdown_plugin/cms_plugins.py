@@ -56,7 +56,7 @@ class MarkdownCMSPlugin(CMSPluginBase):
             for markdownimage in MarkdownImage.objects.filter(markdown=instance, alias=alias):
                 return markdownimage.image.url
 
-            return ''
+            return match.group(0)
 
         content_html = re.sub("{{\s*(.*?)\s*}}", repl, content_html)
 
