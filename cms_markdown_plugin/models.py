@@ -15,6 +15,17 @@ class Markdown(CMSPlugin):
     content = models.TextField(_('Content'), blank=True)
     css = models.TextField(_('CSS'), blank=True)
 
+    def copy_relation(self, oldinstance, queryset_name):
+        for item in getattr(oldinstance, queryset_name).all():
+            item.id = None
+            item.pk = None
+            item.markdown = self
+            item.save()
+    
+    def copy_relations(self, oldinstance):
+        self.copy_relation(oldinstance, 'markdownfile_set')
+        self.copy_relation(oldinstance, 'markdownimage_set')
+
 @receiver(post_save, sender=Markdown)
 def post_save_Markdown(sender, instance, **kwargs):
     if instance.id is not None:
