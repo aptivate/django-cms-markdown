@@ -23,8 +23,8 @@ class Markdown(CMSPlugin):
             item.save()
     
     def copy_relations(self, oldinstance):
-        self.copy_relation('markdownfile_set')
-        self.copy_relation('markdownimage_set')
+        self.copy_relation(oldinstance, 'markdownfile_set')
+        self.copy_relation(oldinstance, 'markdownimage_set')
 
 @receiver(post_save, sender=Markdown)
 def post_save_Markdown(sender, instance, **kwargs):
